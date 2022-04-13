@@ -1,2 +1,20 @@
 
 Hardware_Acceleration/Design_Tutorials/08-ivas-ml/hw_src/Vitis_Libraries/
+
+*.xo
+*.csv
+*.csv#
+*.json
+*.xml
+*.exe
+*.log
+*.wcfg
+*.wdb
+*.xclbin
+*.info
+*.link_summary
+*.compile_summary
+*.str
+*.run_summary
+*.swp
+
