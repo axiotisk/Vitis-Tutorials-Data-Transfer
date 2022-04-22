@@ -1,0 +1,10 @@
+Loading wide_vadd.xclbin to program the Alveo board
+
+[/home/kaxiotis/Vitis-Tutorials-Data-Transfer/data_transfer_tests/prj_5_4096/u250/hw/.run/17799/hw_em/device0/tempFile_0.zip]
+  End-of-central-directory signature not found.  Either this file is not
+    a zipfile, or it constitutes one disk of a multi-part archive.  In the
+      latter case the central directory and zipfile comment will be found on
+        the last disk(s) of this archive.
+        unzip:  cannot find zipfile directory in one of /home/kaxiotis/Vitis-Tutorials-Data-Transfer/data_transfer_tests/prj_5_4096/u250/hw/.run/17799/hw_em/device0/tempFile_0.zip or
+                /home/kaxiotis/Vitis-Tutorials-Data-Transfer/data_transfer_tests/prj_5_4096/u250/hw/.run/17799/hw_em/device0/tempFile_0.zip.zip, and cannot find /home/kaxiotis/Vitis-Tutorials-Data-Transfer/data_transfer_tests/prj_5_4096/u250/hw/.run/17799/hw_em/device0/tempFile_0.zip.ZIP, period.
+                ERROR: [EMU 60-600] unzip -q /home/kaxiotis/Vitis-Tutorials-Data-Transfer/data_transfer_tests/prj_5_4096/u250/hw/.run/17799/hw_em/device0/tempFile_0.zip -d /home/kaxiotis/Vitis-Tutorials-Data-Transfer/data_transfer_tests/prj_5_4096/u250/hw/.run/17799/hw_em/device0/binary_0 Exception Caught - Failed with the error code 2304 at the Line Number 776. PLEASE CHECK YOUR PERMISSIONS

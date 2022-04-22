@@ -1,0 +1,17 @@
+Simple malloc vadd example complete!
+
+--------------- Key execution times ---------------
+OpenCL Initialization              : 18977.404 ms
+Allocating memory buffer           :    0.012 ms
+Populating buffer inputs           :    0.029 ms
+Software VADD run                  :    0.038 ms
+Map host buffers to OpenCL buffers :    0.023 ms
+Set kernel arguments               :    7.410 ms
+Memory object migration enqueue    :    8.220 ms
+OCL Enqueue task                   :    0.273 ms
+Wait for kernel to complete        : 3000.644 ms
+Read back computation results      :    2.381 ms
+INFO::[ Vitis-EM 22 ] [Time elapsed: 0 minute(s) 14 seconds, Emulation time: 0.099211 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_aximm1-DDR[1]          RD = 16.000 KB              WR = 16.000 KB
+vadd_1:m_axi_aximm2-DDR[2]          RD = 16.000 KB              WR = 0.000 KB

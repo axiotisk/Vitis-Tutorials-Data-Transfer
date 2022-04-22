@@ -1,0 +1,13 @@
+--------------- Key execution times ---------------
+OpenCL Initialization              : 19718.701 ms
+Allocate contiguous OpenCL buffers :    0.025 ms
+Map buffers to userspace pointers  :    0.432 ms
+Populating buffer inputs           :    0.278 ms
+Software VADD run                  :    0.162 ms
+Memory object migration enqueue    :   60.323 ms
+Wait for kernels to complete       : 3015.893 ms
+INFO::[ Vitis-EM 22 ] [Time elapsed: 0 minute(s) 14 seconds, Emulation time: 0.086639 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_in_a-DDR[1]          RD = 128.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_in_b-DDR[2]          RD = 128.000 KB             WR = 0.000 KB        
+vadd_1:m_axi_out_c-DDR[1]          RD = 0.000 KB               WR = 128.000 KB 
