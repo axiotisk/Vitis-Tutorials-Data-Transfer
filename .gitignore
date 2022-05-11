@@ -1,6 +1,7 @@
-
-Hardware_Acceleration/Design_Tutorials/08-ivas-ml/hw_src/Vitis_Libraries/
-
+**/_x/*
+**/.run/*
+**/.ipcache/*
+*.o
 *.xo
 *.csv
 *.csv#
@@ -17,4 +18,3 @@ Hardware_Acceleration/Design_Tutorials/08-ivas-ml/hw_src/Vitis_Libraries/
 *.str
 *.run_summary
 *.swp
-
