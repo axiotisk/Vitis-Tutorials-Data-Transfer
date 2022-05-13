@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/00_load_kernels.dir/sw_src/00_load_kernels.cpp.o  -o 00_load_kernels -rdynamic /opt/xilinx/xrt/lib/libxrt_core.so /opt/xilinx/xrt/lib/libxilinxopencl.so -lOpenCL -lpthread -luuid -ldl libexample_utils.a -Wl,-rpath,/opt/xilinx/xrt/lib 

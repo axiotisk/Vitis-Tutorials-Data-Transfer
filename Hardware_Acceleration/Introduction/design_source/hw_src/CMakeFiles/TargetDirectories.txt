@@ -1,0 +1,8 @@
+/home/kaxiotis/Vitis-Tutorials-Data-Transfer/Hardware_Acceleration/Introduction/design_source/hw_src/CMakeFiles/06_wide_processor.dir
+/home/kaxiotis/Vitis-Tutorials-Data-Transfer/Hardware_Acceleration/Introduction/design_source/hw_src/CMakeFiles/04_wide_vadd.dir
+/home/kaxiotis/Vitis-Tutorials-Data-Transfer/Hardware_Acceleration/Introduction/design_source/hw_src/CMakeFiles/05_pipelined_vadd.dir
+/home/kaxiotis/Vitis-Tutorials-Data-Transfer/Hardware_Acceleration/Introduction/design_source/hw_src/CMakeFiles/02_aligned_malloc.dir
+/home/kaxiotis/Vitis-Tutorials-Data-Transfer/Hardware_Acceleration/Introduction/design_source/hw_src/CMakeFiles/03_buffer_map.dir
+/home/kaxiotis/Vitis-Tutorials-Data-Transfer/Hardware_Acceleration/Introduction/design_source/hw_src/CMakeFiles/01_simple_malloc.dir
+/home/kaxiotis/Vitis-Tutorials-Data-Transfer/Hardware_Acceleration/Introduction/design_source/hw_src/CMakeFiles/00_load_kernels.dir
+/home/kaxiotis/Vitis-Tutorials-Data-Transfer/Hardware_Acceleration/Introduction/design_source/hw_src/CMakeFiles/example_utils.dir

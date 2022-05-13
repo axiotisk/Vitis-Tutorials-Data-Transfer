@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/01_simple_malloc.dir/sw_src/01_simple_malloc.cpp.o  -o 01_simple_malloc -rdynamic /opt/xilinx/xrt/lib/libxrt_core.so /opt/xilinx/xrt/lib/libxilinxopencl.so -lOpenCL -lpthread -luuid -ldl libexample_utils.a -Wl,-rpath,/opt/xilinx/xrt/lib 
