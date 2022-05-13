@@ -1,0 +1,13 @@
+Simple malloc vadd example complete!
+
+--------------- Key execution times ---------------
+OpenCL Initialization              : 6977.321 ms
+Allocating memory buffer           :    0.007 ms
+Populating buffer inputs           :    0.014 ms
+Software VADD run                  :    0.020 ms
+Map host buffers to OpenCL buffers :    0.014 ms
+Set kernel arguments               :    0.187 ms
+Memory object migration enqueue    :  131.679 ms
+OCL Enqueue task                   :    0.160 ms
+Wait for kernel to complete        :    0.175 ms
+Read back computation results      :    0.238 ms

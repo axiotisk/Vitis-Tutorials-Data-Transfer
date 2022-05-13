@@ -2,13 +2,13 @@
 # Vitis Analyzer v2021.2.1 (64-bit)
 # SW Build 3414424 on Sun Dec 19 10:57:14 MST 2021
 # 
-# Start of session at: Wed Apr 20 15:25:27 2022
-# Process ID: 6541
+# Start of session at: Wed May  4 15:45:14 2022
+# Process ID: 17181
 # Current directory: /home/kaxiotis/Vitis-Tutorials-Data-Transfer/data_transfer_tests/prj_4_32/u250/hw_emu
 # Command line: vitis_analyzer xrt.run_summary
 # Log file: /home/kaxiotis/Vitis-Tutorials-Data-Transfer/data_transfer_tests/prj_4_32/u250/hw_emu/vitis_analyzer.log
 # Journal file: /home/kaxiotis/Vitis-Tutorials-Data-Transfer/data_transfer_tests/prj_4_32/u250/hw_emu/vitis_analyzer.jou
-# Running On: at-tdaq-mldev01, OS: Linux, CPU Frequency: 3299.273 MHz, CPU Physical cores: 32, Host memory: 135116 MB
+# Running On: at-tdaq-mldev01, OS: Linux, CPU Frequency: 1392.726 MHz, CPU Physical cores: 32, Host memory: 135116 MB
 #-----------------------------------------------------------
 start_gui
 create_project dummy

@@ -3,13 +3,11 @@
 # Exit when any command fails
 set -e
 
-example="${1}"
-
 make clean
 
 # Make sure everything is up to date
-make ${example} 
+make
 
 # Run the application in HW emulation mode
-XCL_EMULATION_MODE=hw_emu ./app${example}.exe 
+XCL_EMULATION_MODE=hw_emu ./app.exe 
 

@@ -1,0 +1,41 @@
+Successfully wrote (47418155 bytes) to the output file: /home/kaxiotis/Vitis-Tutorials/Getting_Started/Vitis/example/u200/hw/wide_vadd.xclbin
+Leaving xclbinutil.
+INFO: [v++ 60-1441] [17:50:14] Run run_link: Step xclbinutil: Completed
+Time (s): cpu = 00:00:00.12 ; elapsed = 00:00:00.20 . Memory (MB): peak = 2070.262 ; gain = 0.000 ; free physical = 67203 ; free virtual = 135391
+INFO: [v++ 60-1443] [17:50:14] Run run_link: Step xclbinutilinfo: Started
+INFO: [v++ 60-1453] Command Line: xclbinutil --quiet --force --info /home/kaxiotis/Vitis-Tutorials/Getting_Started/Vitis/example/u200/hw/wide_vadd.xclbin.info --input /home/kaxiotis/Vitis-Tutorials/Getting_Started/Vitis/example/u200/hw/wide_vadd.xclbin
+INFO: [v++ 60-1454] Run Directory: /home/kaxiotis/Vitis-Tutorials/Getting_Started/Vitis/example/u200/hw/_x/link/run_link
+INFO: [v++ 60-1441] [17:50:14] Run run_link: Step xclbinutilinfo: Completed
+Time (s): cpu = 00:00:00.46 ; elapsed = 00:00:00.52 . Memory (MB): peak = 2070.262 ; gain = 0.000 ; free physical = 67203 ; free virtual = 135391
+INFO: [v++ 60-1443] [17:50:14] Run run_link: Step generate_sc_driver: Started
+INFO: [v++ 60-1453] Command Line:
+INFO: [v++ 60-1454] Run Directory: /home/kaxiotis/Vitis-Tutorials/Getting_Started/Vitis/example/u200/hw/_x/link/run_link
+INFO: [v++ 60-1441] [17:50:14] Run run_link: Step generate_sc_driver: Completed
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2070.262 ; gain = 0.000 ; free physical = 67203 ; free virtual = 135391
+INFO: [v++ 60-244] Generating system estimate report...
+INFO: [v++ 60-1092] Generated system estimate report: /home/kaxiotis/Vitis-Tutorials/Getting_Started/Vitis/example/u200/hw/_x/reports/link/system_estimate_wide_vadd.xtxt
+INFO: [v++ 60-586] Created /home/kaxiotis/Vitis-Tutorials/Getting_Started/Vitis/example/u200/hw/wide_vadd.ltx
+INFO: [v++ 60-586] Created wide_vadd.xclbin
+INFO: [v++ 60-1307] Run completed. Additional information can be found in:
+        Guidance: /home/kaxiotis/Vitis-Tutorials/Getting_Started/Vitis/example/u200/hw/_x/reports/link/v++_link_wide_vadd_guidance.html
+                Timing Report: /home/kaxiotis/Vitis-Tutorials/Getting_Started/Vitis/example/u200/hw/_x/reports/link/imp/impl_1_hw_bb_locked_timing_summary_routed.rpt
+                        Vivado Log: /home/kaxiotis/Vitis-Tutorials/Getting_Started/Vitis/example/u200/hw/_x/logs/link/vivado.log
+                                Steps Log File: /home/kaxiotis/Vitis-Tutorials/Getting_Started/Vitis/example/u200/hw/_x/logs/link/link.steps.log
+
+                                INFO: [v++ 60-2343] Use the vitis_analyzer tool to visualize and navigate the relevant reports. Run the following command.
+                                    vitis_analyzer /home/kaxiotis/Vitis-Tutorials/Getting_Started/Vitis/example/u200/hw/wide_vadd.xclbin.link_summary
+                                    INFO: [v++ 60-791] Total elapsed time: 2h 11m 3s
+                                    INFO: [v++ 60-1653] Closing dispatch client.
+                                    -- Example 5: Pipelining Kernel Execution --
+
+                                    Loading wide_vadd.xclbin to program the Alveo board
+
+                                    [/home/kaxiotis/Vitis-Tutorials/Getting_Started/Vitis/example/u200/hw/.run/18485/hw_em/device0/tempFile_0.zip]
+                                      End-of-central-directory signature not found.  Either this file is not
+                                        a zipfile, or it constitutes one disk of a multi-part archive.  In the
+                                          latter case the central directory and zipfile comment will be found on
+                                            the last disk(s) of this archive.
+                                            unzip:  cannot find zipfile directory in one of /home/kaxiotis/Vitis-Tutorials/Getting_Started/Vitis/example/u200/hw/.run/18485/hw_em/device0/tempFile_0.zip or
+                                                    /home/kaxiotis/Vitis-Tutorials/Getting_Started/Vitis/example/u200/hw/.run/18485/hw_em/device0/tempFile_0.zip.zip, and cannot find /home/kaxiotis/Vitis-Tutorials/Getting_Started/Vitis/example/u200/hw/.run/18485/hw_em/device0/tempFile_0.zip.ZIP, period.
+                                                    ERROR: [EMU 60-600] unzip -q /home/kaxiotis/Vitis-Tutorials/Getting_Started/Vitis/example/u200/hw/.run/18485/hw_em/device0/tempFile_0.zip -d /home/kaxiotis/Vitis-Tutorials/Getting_Started/Vitis/example/u200/hw/.run/18485/hw_em/device0/binary_0 Exception Caught - Failed with the error code 2304 at the Line Number 776. PLEASE CHECK YOUR PERMISSIONS
+

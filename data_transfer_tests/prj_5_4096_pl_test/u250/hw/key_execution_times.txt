@@ -1,0 +1,11 @@
+OCL-mapped contiguous buffer example complete!
+
+--------------- Key execution times ---------------
+OpenCL Initialization              :  319.616 ms
+Allocate contiguous OpenCL buffers :    0.018 ms
+Map buffers to userspace pointers  :   10.249 ms
+Populating buffer inputs           :  150.927 ms
+Software VADD run                  :  153.796 ms
+Memory object migration enqueue    :    1.104 ms
+Wait for kernels to complete       :   44.061 ms
+

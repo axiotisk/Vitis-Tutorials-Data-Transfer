@@ -1,0 +1,15 @@
+OCL-mapped contiguous buffer example complete!
+
+--------------- Key execution times ---------------
+OpenCL Initialization              : 19231.047 ms
+Allocate contiguous OpenCL buffers :    0.026 ms
+Map buffers to userspace pointers  :   16.148 ms
+Populating buffer inputs           :    8.702 ms
+Software VADD run                  :    6.963 ms
+Memory object migration enqueue    :  294.194 ms
+Wait for kernels to complete       : 123283.320 ms
+INFO::[ Vitis-EM 22 ] [Time elapsed: 2 minute(s) 17 seconds, Emulation time: 0.714952 ms]
+Data transfer between kernel(s) and global memory(s)
+vadd_1:m_axi_in_a-DDR[1]          RD = 4096.000 KB            WR = 0.000 KB
+vadd_1:m_axi_in_b-DDR[2]          RD = 4096.000 KB            WR = 0.000 KB
+vadd_1:m_axi_out_c-DDR[1]          RD = 4096.000 KB            WR = 4096.000 KB
