@@ -4,7 +4,7 @@
 set -e
 
 # Make sure everything is up to date
-make all 
+make -j all 
 
 # Run the application in HW emulation mode
 XCL_EMULATION_MODE=sw_emu ./app.exe 

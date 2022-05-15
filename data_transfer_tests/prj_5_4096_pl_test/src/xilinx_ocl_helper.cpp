@@ -11,10 +11,11 @@ std::vector<cl::Device> XilinxOclHelper::find_xilinx_devices()
     cl::Platform::get(&platforms);
 
     cl::Platform platform;
+    std::cout << "INFO: [K] platforms.size = " << platforms.size() << std::endl;
     for (i = 0; i < platforms.size(); i++) {
         platform                  = platforms[i];
         std::string platform_name = platform.getInfo<CL_PLATFORM_NAME>();
-        std::cout << "INFO: K: Platform Name: " << platform_name << std::endl;
+        std::cout << "INFO: [K] Platform Name: " << platform_name << std::endl;
         if (platform_name == "Xilinx") {
             break;
         }
