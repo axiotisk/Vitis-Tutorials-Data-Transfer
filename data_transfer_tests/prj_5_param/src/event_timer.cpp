@@ -32,6 +32,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <iomanip>
 #include <iostream>
+#include <fstream> //[K]
 
 EventTimer::EventTimer()
 {
@@ -83,8 +84,11 @@ void EventTimer::clear(void)
     unfinished  = false;
 }
 
-void EventTimer::print(int id)
+void EventTimer::print(int id, std::string file_name)
+//void EventTimer::print(int id, std::string file_name)
+//void EventTimer::print(int id)
 {
+
     std::ios_base::fmtflags flags(std::cout.flags());
     if (id >= 0) {
         if ((unsigned)id > event_names.size())
@@ -93,13 +97,26 @@ void EventTimer::print(int id)
                   << ms_difference(start_times[id], end_times[id]) << std::endl;
     }
     else {
+        std::cout<<"Key exe times file name: "<<file_name<<std::endl;
+        std::ofstream target_file; //[K] defining target file
+        std::string file_name;
+        file_name = "test_file_2.csv";
+        target_file.open(file_name);
         int printable_events = unfinished ? event_count - 1 : event_count;
         for (int i = 0; i < printable_events; i++) {
+            //[K] Writing to file
+            target_file << std::left << std::setw(max_string_length) << event_names[i] << ",";
+            target_file << std::right << std::setw(8) << std::fixed << std::setprecision(3)
+                      << ms_difference(start_times[i], end_times[i]) << ",ms\n";
+
+
             std::cout << std::left << std::setw(max_string_length) << event_names[i] << " : ";
             std::cout << std::right << std::setw(8) << std::fixed << std::setprecision(3)
                       << ms_difference(start_times[i], end_times[i]) << " ms"
                       << std::endl;
+
         }
+        target_file.close();
     }
     std::cout.flags(flags);
 }

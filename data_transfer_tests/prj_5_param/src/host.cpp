@@ -284,8 +284,9 @@ int main(int argc, char *argv[])
         free(d);
         q.finish();
 
-
-        et.print();
+  
+        //et.print(-1, "hello");
+        et.print(-1, "test_file_2.csv");
     }
     catch (cl::Error &e) {
         std::cout << "ERROR: " << e.what() << std::endl;
