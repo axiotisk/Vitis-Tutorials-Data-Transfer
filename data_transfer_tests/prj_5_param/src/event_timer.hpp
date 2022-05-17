@@ -57,7 +57,7 @@ public:
     void clear(void);
 
     //void print(int id, std::string di);
-    void print(int id, std::string file_name);
+    void print(int id, std::string buf_size, std::string num_bufs);
 };
 
 #endif // EVENT_TIMER_HPP__

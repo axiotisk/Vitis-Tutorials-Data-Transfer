@@ -34,11 +34,15 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <iostream>
 #include <memory>
 #include <string>
+#include <sstream>
+#include <stdio.h>
+#include <stddef.h>
+#include <stdint.h>
 
 // Xilinx OpenCL and XRT includes
 #include "xilinx_ocl_helper.hpp"
 
-#define BUFSIZE (4096)
+//#define BUFSIZE (4096)
 #define NUM_BUFS 1
 
 void vadd_sw(uint32_t *a, uint32_t *b, uint32_t *c, uint32_t size)
@@ -143,6 +147,14 @@ int enqueue_subbuf_vadd(cl::CommandQueue &q,
 
 int main(int argc, char *argv[])
 {
+    //[K] edit start
+    const std::string str_bufsize =  argv[1];
+    const std::string str_num_bufs =  std::to_string(NUM_BUFS);
+
+    const int bufsize =  atoi(str_bufsize.c_str());
+
+    //[K] edit end
+    
     // Initialize an event timer we'll use for monitoring the application
     EventTimer et;
 
@@ -175,20 +187,20 @@ int main(int argc, char *argv[])
         et.add("Allocate contiguous OpenCL buffers");
         cl::Buffer a_buf(xocl.get_context(),
                          static_cast<cl_mem_flags>(CL_MEM_READ_ONLY),
-                         BUFSIZE * sizeof(uint32_t),
+                         bufsize * sizeof(uint32_t),
                          NULL,
                          NULL);
         cl::Buffer b_buf(xocl.get_context(),
                          static_cast<cl_mem_flags>(CL_MEM_READ_ONLY),
-                         BUFSIZE * sizeof(uint32_t),
+                         bufsize * sizeof(uint32_t),
                          NULL,
                          NULL);
         cl::Buffer c_buf(xocl.get_context(),
                          static_cast<cl_mem_flags>(CL_MEM_READ_WRITE),
-                         BUFSIZE * sizeof(uint32_t),
+                         bufsize * sizeof(uint32_t),
                          NULL,
                          NULL);
-        uint32_t *d = new uint32_t[BUFSIZE];
+        uint32_t *d = new uint32_t[bufsize];
         et.finish();
 
         // Although we'll change these later, we'll set the buffers as kernel
@@ -203,22 +215,22 @@ int main(int argc, char *argv[])
                                                      CL_TRUE,
                                                      CL_MAP_WRITE,
                                                      0,
-                                                     BUFSIZE * sizeof(uint32_t));
+                                                     bufsize * sizeof(uint32_t));
         uint32_t *b = (uint32_t *)q.enqueueMapBuffer(b_buf,
                                                      CL_TRUE,
                                                      CL_MAP_WRITE,
                                                      0,
-                                                     BUFSIZE * sizeof(uint32_t));
+                                                     bufsize * sizeof(uint32_t));
         uint32_t *c = (uint32_t *)q.enqueueMapBuffer(c_buf,
                                                      CL_TRUE,
                                                      CL_MAP_READ,
                                                      0,
-                                                     BUFSIZE * sizeof(uint32_t));
+                                                     bufsize * sizeof(uint32_t));
         et.finish();
 
 
         et.add("Populating buffer inputs");
-        for (int i = 0; i < BUFSIZE; i++) {
+        for (int i = 0; i < bufsize; i++) {
             a[i] = i;
             b[i] = 2 * i;
         }
@@ -226,7 +238,7 @@ int main(int argc, char *argv[])
 
         // For comparison, let's have the CPU calculate the result
         et.add("Software VADD run");
-        vadd_sw(a, b, d, BUFSIZE);
+        vadd_sw(a, b, d, bufsize);
         et.finish();
 
         // Send the buffers down to the Alveo card
@@ -253,7 +265,7 @@ int main(int argc, char *argv[])
 
         // Verify the results
         bool verified = true;
-        for (int i = 0; i < BUFSIZE; i++) {
+        for (int i = 0; i < bufsize; i++) {
             if (c[i] != d[i]) {
                 verified = false;
                 std::cout << "ERROR: software and hardware vadd do not match: "
@@ -286,7 +298,7 @@ int main(int argc, char *argv[])
 
   
         //et.print(-1, "hello");
-        et.print(-1, "test_file_2.csv");
+        et.print(-1, str_bufsize, str_num_bufs);
     }
     catch (cl::Error &e) {
         std::cout << "ERROR: " << e.what() << std::endl;

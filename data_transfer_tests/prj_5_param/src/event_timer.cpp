@@ -84,7 +84,7 @@ void EventTimer::clear(void)
     unfinished  = false;
 }
 
-void EventTimer::print(int id, std::string file_name)
+void EventTimer::print(int id, std::string bufsize, std::string num_bufs)
 //void EventTimer::print(int id, std::string file_name)
 //void EventTimer::print(int id)
 {
@@ -97,17 +97,26 @@ void EventTimer::print(int id, std::string file_name)
                   << ms_difference(start_times[id], end_times[id]) << std::endl;
     }
     else {
-        std::cout<<"Key exe times file name: "<<file_name<<std::endl;
+        std::cout<<"Key exe times file name: "<<bufsize<<std::endl;
         std::ofstream target_file; //[K] defining target file
-        std::string file_name;
-        file_name = "test_file_2.csv";
+        std::string file_name = "key_exe_times_csv/bs_" + bufsize + "_nb_" + num_bufs + ".csv";
         target_file.open(file_name);
         int printable_events = unfinished ? event_count - 1 : event_count;
+
+        target_file << "Buffer size" << ",";
+        target_file << bufsize << "\n";
+
+        target_file << "Number of buffers" << ",";
+        target_file << num_bufs << "\n";
+        
         for (int i = 0; i < printable_events; i++) {
             //[K] Writing to file
-            target_file << std::left << std::setw(max_string_length) << event_names[i] << ",";
-            target_file << std::right << std::setw(8) << std::fixed << std::setprecision(3)
-                      << ms_difference(start_times[i], end_times[i]) << ",ms\n";
+            target_file << event_names[i] << ",";
+            target_file << ms_difference(start_times[i], end_times[i]) << ",ms\n";
+            
+//            target_file << std::left << std::setw(max_string_length) << event_names[i] << ",";
+//            target_file << std::right << std::setw(8) << std::fixed << std::setprecision(3)
+//                      << ms_difference(start_times[i], end_times[i]) << ",ms\n";
 
 
             std::cout << std::left << std::setw(max_string_length) << event_names[i] << " : ";
