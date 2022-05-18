@@ -103,6 +103,8 @@ void EventTimer::print(int id, std::string bufsize, std::string num_bufs)
         target_file.open(file_name);
         int printable_events = unfinished ? event_count - 1 : event_count;
 
+        target_file << "Description,Value,Unit\n";
+
         target_file << "Buffer size" << ",";
         target_file << bufsize << "\n";
 
