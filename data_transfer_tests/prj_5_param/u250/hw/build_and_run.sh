@@ -6,7 +6,7 @@ set -e
 make clean
 
 # Make sure everything is up to date
-make
+make -j
 
 # Run the application in HW emulation mode
 ## Check if XCL_EMULATION_MODE is set and if os then unset it before running
