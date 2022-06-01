@@ -5,8 +5,10 @@ import matplotlib.pyplot as plt
 
 class keyExeTimes:
     #def __init__ (self, ar_buff_size, ar_num_buff, ar_time_sw, ar_obj_migration, ar_wait_kernel, ar_time_hw):
-    def __init__ (self):
+    def __init__ (self, directory, legend):
 
+        self.directory = directory
+        self.legend = legend
         self.ar_bs = []
         self.ar_buff_size = []
         self.ar_num_buff = []
@@ -20,6 +22,9 @@ class keyExeTimes:
         self.ar_time_hw_sort = []
  
     #Define interface funtions
+    def get_directory(self):             return self.directory
+    def get_legend(self):                return self.legend
+    def get_ar_bs(self):                 return self.ar_bs
     def get_ar_buff_size(self):          return self.ar_buff_size
     def get_ar_num_buff(self):           return self.ar_num_buff
     def get_ar_time_sw(self):            return self.ar_time_sw
@@ -34,8 +39,8 @@ class keyExeTimes:
     #Defining csv reading functions
 
     #Reading csv file
-    def csv_reader(self, directory, filename):
-        with open (os.path.join(directory, filename), 'r') as f: 
+    def csv_reader(self, filename):
+        with open (os.path.join(self.directory, filename), 'r') as f: 
             csvreader = csv.reader(f)
             header = next(csvreader)
             for values in csvreader:
@@ -52,9 +57,9 @@ class keyExeTimes:
                     self.ar_wait_kernel.append(float(values[1]))
 
     #Reads all the files in a given directory
-    def csv_dir_reader(self, directory):
-        for filename in os.listdir(directory):
-            self.csv_reader(directory, filename)
+    def csv_dir_reader(self):
+        for filename in os.listdir(self.directory):
+            self.csv_reader(filename)
 
         #Add "memory obj migration" and "wait for kernel" 
         self.ar_time_hw = [float(a) + float(b) for a, b in zip(self.ar_obj_migration, self.ar_wait_kernel)]  
@@ -69,7 +74,7 @@ class keyExeTimes:
         self.ar_bs.sort()
 
     #Generating plots
-    def plot_generator(self):
+    def csv_plot_generator(self):
         plt.scatter(self.ar_bs, self.ar_time_sw_sort)
         plt.scatter(self.ar_bs, self.ar_obj_migration_sort)
         plt.scatter(self.ar_bs, self.ar_wait_kernel_sort)
@@ -83,20 +88,21 @@ class keyExeTimes:
         plt.show()
 
 if __name__ == "__main__":
-    test_data = keyExeTimes()
+    test_data = keyExeTimes("../key_exe_times_csv/5e3_1e6_b1/", "NUM_BUFF 1")
 
     #Prints an empty list
     print(test_data.get_ar_time_hw())
 
     #Read data from a given directory
-    test_data.csv_dir_reader("../key_exe_times_csv/5e3_1e6_b1/")
+    test_data.csv_dir_reader()
 
     #Prints the list that previously was empty
     print(test_data.get_ar_time_hw())
 
     #Plotting the data read
-    test_data.plot_generator()
+    test_data.csv_plot_generator()
 
     print(test_data.get_ar_wait_kernel_sort())
     print(test_data.get_ar_obj_migration_sort())
+    print(test_data.get_legend())
 
