@@ -1,6 +1,7 @@
 **/_x/*
 **/.run/*
 **/.ipcache/*
+**/__pycache__/*
 *.o
 *.xo
 *.csv
