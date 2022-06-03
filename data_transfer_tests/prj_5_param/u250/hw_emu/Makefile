@@ -1,7 +1,7 @@
 
 all: app.exe emconfig.json wide_vadd.xclbin
 
-app.exe: ../../src/host.cpp
+app.exe: ../../src/host.cpp ../../src/event_timer.cpp
 	g++ -Wall -g -std=c++11 ../../src/host.cpp ../../src/event_timer.cpp ../../src/xilinx_ocl_helper.cpp -o app.exe \
 		-I/home/kaxiotis/Vitis-Tutorials/Getting_Started/Vitis/example/src/ \
 		-L${XILINX_XRT}/lib/ -lOpenCL -pthread -lrt -lstdc++

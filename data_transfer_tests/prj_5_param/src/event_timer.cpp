@@ -84,7 +84,7 @@ void EventTimer::clear(void)
     unfinished  = false;
 }
 
-void EventTimer::print(int id, std::string bufsize, std::string num_bufs)
+void EventTimer::print(int id, std::string bufsize, std::string num_bufs, std::string saving_dir)
 //void EventTimer::print(int id, std::string file_name)
 //void EventTimer::print(int id)
 {
@@ -99,7 +99,8 @@ void EventTimer::print(int id, std::string bufsize, std::string num_bufs)
     else {
         std::cout<<"Key exe times file name: "<<bufsize<<std::endl;
         std::ofstream target_file; //[K] defining target file
-        std::string file_name = "key_exe_times_csv/bs_" + bufsize + "_nb_" + num_bufs + ".csv";
+        std::string file_name = saving_dir + num_bufs + ".csv";
+        std::cout<<"Saving dir: "<<file_name<<std::endl;
         target_file.open(file_name);
         int printable_events = unfinished ? event_count - 1 : event_count;
 

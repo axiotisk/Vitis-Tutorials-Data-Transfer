@@ -148,7 +148,8 @@ int enqueue_subbuf_vadd(cl::CommandQueue &q,
 int main(int argc, char *argv[])
 {
     //[K] edit start
-    const std::string str_bufsize =  argv[1];
+    const std::string saving_dir = argv[1];
+    const std::string str_bufsize =  argv[2];
     const std::string str_num_bufs =  std::to_string(NUM_BUFS);
 
     const int bufsize =  atoi(str_bufsize.c_str());
@@ -298,7 +299,7 @@ int main(int argc, char *argv[])
 
   
         //et.print(-1, "hello");
-        et.print(-1, str_bufsize, str_num_bufs);
+        et.print(-1, str_bufsize, str_num_bufs, saving_dir);
     }
     catch (cl::Error &e) {
         std::cout << "ERROR: " << e.what() << std::endl;
