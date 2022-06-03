@@ -52,11 +52,18 @@ for i,j in enumerate(args.file_names):
 
 #Setting up hw exe times
 for i in exe_times:
+    #Run on HW
     plt.scatter(exe_times[0].get_ar_bs(), i.get_ar_time_hw_sort())
 
+    #Object Migration
+    plt.scatter(exe_times[0].get_ar_bs(), i.get_ar_obj_migration_sort())
+
+    #Kernel
+    plt.scatter(exe_times[0].get_ar_bs(), i.get_ar_wait_kernel_sort())
+
 #Setting up sofware exe time plot
-plt.scatter(exe_times[0].get_ar_bs(), exe_times[0].get_ar_time_sw_sort())
-args.legends.append("CPU")
+#plt.scatter(exe_times[0].get_ar_bs(), exe_times[0].get_ar_time_sw_sort())
+#args.legends.append("CPU")
 
 #Setting legend
 plt.legend(args.legends, fontsize=20)
