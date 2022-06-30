@@ -1,6 +1,7 @@
 import csv
 import numpy as np
 import matplotlib.pyplot as plt
+import plotly.graph_objects as go
 from scipy.stats import norm
 
 class opencl_trace:
@@ -97,21 +98,120 @@ class opencl_trace:
     def plot_std_deviation_mean(self):
         #Code from : "https://www.nbshare.io/notebook/42712841/Understanding-Standard-Deviation-With-Python/"
         values = ["Write", "Read", "Kernel Execution"]
-        domain = np.linspace(-0.2, 0.5, 1000) # dividing the distance between -2 and 2 into 1000 points
+        domain = np.linspace(0, 0.5, 1000) # dividing the distance between -2 and 2 into 1000 points
 	
         means = [self.write_mean, self.read_mean, self.kernel_exe_mean]
         std_values = [self.write_std_deviation, self.read_std_deviation, self.kernel_exe_std_deviation]
         
         plt.figure(figsize=(16, 9))
         for mu, std, values in zip(means, std_values, values):
+            mu_round = round(mu, 2)
+            std_round = round(std, 2)
             # pdf stands for Probability Density Function, which is the plot the probabilities of each range of values
             probabilities = norm.pdf(domain, mu, std)
-            plt.plot(domain, probabilities, label=f"{values}\n$\mu={mu}$\n$\sigma={std}$\n")
+            plt.plot(domain, probabilities, label=f"{values}\n$\mu={mu_round}$\n$\sigma={std_round}$\n")
         
-        plt.legend(fontsize=8)
-        plt.xlabel("Value", fontsize=15)
-        plt.ylabel("Probability", fontsize=15)
+        plt.legend(fontsize=15)
+        plt.xlabel("Time [ms]", fontsize=20)
+        plt.ylabel("Probability", fontsize=20)
         plt.show()
+
+    #Plots stadard deviation and mean 2d histogram
+    def plot_std_deviation_histogram(self):
+        probabilities = [0, 0]
+        #Code from : "https://www.nbshare.io/notebook/42712841/Understanding-Standard-Deviation-With-Python/"
+        values = ["Write", "Read", "Kernel Execution"]
+        domain = np.linspace(-0.2, 0.5, 100) # dividing the distance between -2 and 2 into 1000 points
+	
+        means = [self.write_mean, self.read_mean, self.kernel_exe_mean]
+        std_values = [self.write_std_deviation, self.read_std_deviation, self.kernel_exe_std_deviation]
+        
+        #plt.figure(figsize=(16, 9))
+
+        write = norm.pdf(domain, float(self.write_mean), float(self.write_std_deviation))
+        read = norm.pdf(domain, float(self.read_mean), float(self.read_std_deviation))
+
+        fig = go.Figure(go.Histogram2d(x=write, y=read))
+        fig.show()
+
+#        #mean = [0, 0]
+#        #cov = [[1, 1], [1, 2]]
+#        #read, write = np.random.multivariate_normal(mean, cov, 10000).T
+#
+#        print("read: ", read)
+#        write_min = np.min(write)
+#        write_max = np.max(write)
+#        read_min = np.min(read)
+#        read_max = np.max(read)
+#
+#        write_bins = np.linspace(write_min, write_max, 60)
+#        read_bins = np.linspace(read_min, read_max, 30)
+#
+#        fig, ax = plt.subplots(figsize = (9,4))
+#        plt.hist2d(write, read, bins=30)#bins = [write_bins, read_bins])
+#
+#        #plt.hist2d(probabilities[0], probabilities[1], bins=(300, 300), cmap=plt.cm.jet)
+#        #print(probabilities)
+#        
+#        #plt.legend(fontsize=8)
+#        #plt.xlabel("Value", fontsize=15)
+#        #plt.ylabel("Probability", fontsize=15)
+#
+#        ax.set_xlabel('Write')
+#        ax.set_ylabel('Read')
+#
+#        plt.tight_layout()
+#        plt.show()
+    #Plots read, write and execution time for different sizes of buffers
+    def plot_times(self):
+        buffers = [100000 * i for i in range(10, 1005, 5)]
+        print(buffers)
+        plt.scatter(buffers, self.write_time)
+        plt.scatter(buffers, self.read_time)
+        plt.scatter(buffers, self.kernel_exe_time)
+
+        plt.legend(["Write", "Read", "Kernel Execution"], fontsize=20)
+        plt.xlabel("Buffer Size [Integers]", fontsize=20)
+        plt.ylabel("Execution Times [ms]", fontsize=20)
+
+        plt.show()
+
+#    #Plots distribution histogram
+#    def plot_distr_hist(self):
+#        plt.rcParams.update({'figure.figsize':(7,5), 'figure.dpi':100})
+#
+#        # Plot Histogram on x
+#        x = self.kernel_exe_time #np.random.normal(size = 1000)
+#        plt.hist(x, bins=50)
+#        plt.gca().set(title='Frequency Histogram', ylabel='Frequency');
+#        
+#        plt.show()
+
+    #Plots distribution histogram
+    def plot_distr_hist(self):
+        x1 = self.write_time #df.loc[df.cut=='Ideal', 'depth']
+        x2 = self.read_time #df.loc[df.cut=='Fair', 'depth']
+        x3 = self.kernel_exe_time #df.loc[df.cut=='Good', 'depth']
+        
+        kwargs = dict(alpha=0.5, bins=10)
+        
+        plt.hist(x1, **kwargs, color='g', label='Write')
+        plt.hist(x2, **kwargs, color='b', label='Read')
+        plt.hist(x3, **kwargs, color='r', label='Kernel Execution')
+        plt.gca().set(title='Frequency Histogram', ylabel='Frequency', xlabel='Time [ms]')
+        plt.xlim(-2,100)
+        plt.legend();
+
+        print("write max = ", max(self.write_time))
+        print("read max = ", max(self.read_time))
+        print("kernel execution max = ", max(self.kernel_exe_time))
+
+        print("write min = ", min(self.write_time))
+        print("read min = ", min(self.read_time))
+        print("kernel execution min = ", min(self.kernel_exe_time))
+
+        plt.show()
+
         
 if __name__ == "__main__":
     csv_values = opencl_trace()
@@ -132,6 +232,9 @@ if __name__ == "__main__":
     print("read_mean: ", csv_values.get_read_mean())
     print("kenrel_exe_mean: ", csv_values.get_kernel_exe_mean())
 
-    csv_values.plot_std_deviation_mean()
+#    csv_values.plot_std_deviation_mean()
+#    csv_values.plot_std_deviation_histogram()
+#    csv_values.plot_times()
+    csv_values.plot_distr_hist()
 
 
