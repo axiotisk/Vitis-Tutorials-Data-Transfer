@@ -196,11 +196,15 @@ class opencl_trace:
         kwargs = dict(alpha=0.5, bins=10)
         
         plt.hist(x1, **kwargs, color='g', label='Write')
+        kwargs = dict(alpha=0.5, bins=10)
         plt.hist(x2, **kwargs, color='b', label='Read')
         plt.hist(x3, **kwargs, color='r', label='Kernel Execution')
         plt.gca().set(title='Frequency Histogram', ylabel='Frequency', xlabel='Time [ms]')
-        plt.xlim(-2,100)
-        plt.legend();
+        plt.xlim(0,15)
+        plt.title('Frequency Histogram', fontsize=15)
+        plt.xlabel('Time [ms]', fontsize=15)
+        plt.ylabel('Frequency', fontsize=15)
+        plt.legend(prop={'size':15});
 
         print("write max = ", max(self.write_time))
         print("read max = ", max(self.read_time))
@@ -215,7 +219,7 @@ class opencl_trace:
         
 if __name__ == "__main__":
     csv_values = opencl_trace()
-    csv_values.csv_reader("opencl_trace.csv")
+    csv_values.csv_reader("stat_param.csv")
     csv_values.duration_calc()
     csv_values.std_deviation()
     csv_values.mean_calc()
@@ -237,4 +241,10 @@ if __name__ == "__main__":
 #    csv_values.plot_times()
     csv_values.plot_distr_hist()
 
+    read_end_time = csv_values.get_read_end_time()
+    read_start_time = csv_values.get_read_start_time()
+    
+    print("First read start: ", read_start_time[0])
+    print("First read end: ", read_end_time[0])
+    print("First read time: ", float(read_end_time[0]) - float(read_start_time[0]))
 
