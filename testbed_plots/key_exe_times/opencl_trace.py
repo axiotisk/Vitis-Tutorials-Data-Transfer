@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 from scipy.stats import norm
 
-class opencl_trace:
+class openclTrace:
     def __init__ (self, write_std_deviation = None, read_std_deviation = None, kernel_exe_std_deviation = None, write_mean = None, read_mean = None, kernel_exe_mean = None):
 
         self.read_start_time = []
@@ -218,8 +218,8 @@ class opencl_trace:
 
         
 if __name__ == "__main__":
-    csv_values = opencl_trace()
-    csv_values.csv_reader("stat_param.csv")
+    csv_values = openclTrace()
+    csv_values.csv_reader("../key_exe_times_csv/stat_param.csv")
     csv_values.duration_calc()
     csv_values.std_deviation()
     csv_values.mean_calc()
