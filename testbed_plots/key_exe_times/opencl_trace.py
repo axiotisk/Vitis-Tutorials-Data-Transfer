@@ -88,11 +88,19 @@ class openclTrace:
         self.read_std_deviation = np.std(self.read_time)
         self.kernel_exe_std_deviation = np.std(self.kernel_exe_time)
 
+        print("Write std deviation: ", self.write_std_deviation)
+        print("Read std deviation: ", self.read_std_deviation)
+        print("Kernel execution std deviation: ", self.kernel_exe_std_deviation)
+
     #Calculates mean value of duration
     def mean_calc(self):
         self.write_mean = np.mean(self.write_time)
         self.read_mean = np.mean(self.read_time)
         self.kernel_exe_mean = np.mean(self.kernel_exe_time)
+
+        print("Write mean: ", self.write_mean)
+        print("Read mean: ", self.read_mean)
+        print("Kernel execution mean: ", self.kernel_exe_mean)
 
     #Plots stadard deviation and mean
     def plot_std_deviation_mean(self):
