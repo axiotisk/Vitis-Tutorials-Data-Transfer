@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 from scipy.stats import norm
+from matplotlib.image import NonUniformImage
 
 class openclTrace:
     def __init__ (self, write_std_deviation = None, read_std_deviation = None, kernel_exe_std_deviation = None, write_mean = None, read_mean = None, kernel_exe_mean = None):
@@ -170,6 +171,35 @@ class openclTrace:
 #
 #        plt.tight_layout()
 #        plt.show()
+
+    #2D histogram
+    def hist_2d(self):
+        #Code based on https://numpy.org/doc/stable/reference/generated/numpy.histogram2d.html
+
+        xedges = [3+i for i in np.arange(3, 8, 0.045)] #[0, 1, 3, 5]
+        yedges = [3+i for i in np.arange(0, 3, 0.045)] #[0, 2, 3, 4, 6]
+        x = self.write_time #np.random.normal(2, 1, 100)
+        
+        y = self.read_time #np.random.normal(1, 1, 100)
+        
+        H, xedges, yedges = np.histogram2d(x, y, bins=(xedges, yedges))
+        
+        # Histogram does not follow Cartesian convention (see Notes),
+        
+        # therefore transpose H for visualization purposes.
+        
+        H = H.T
+        fig = plt.figure() #plt.figure(figsize=(7, 3))
+        
+        ax = fig.add_subplot(111, title='Read-Write execution time distribution \n  32x10^7 bit buffer size')
+        ax.set_xlabel('Write [ms]', fontsize = 15)
+        ax.set_ylabel('Read [ms]', fontsize =15)
+        
+        plt.imshow(H, interpolation='nearest', origin='lower', extent=[xedges[0], xedges[-1], yedges[0], yedges[-1]])
+        
+        plt.show()
+
+
     #Plots read, write and execution time for different sizes of buffers
     def plot_times(self):
         buffers = [100000 * i for i in range(10, 1005, 5)]
@@ -203,13 +233,13 @@ class openclTrace:
         
         kwargs = dict(alpha=0.5, bins=10)
         
-        plt.hist(x1, **kwargs, color='g', label='Write')
+        plt.hist(x1, **kwargs, color='b', label='Write')
         kwargs = dict(alpha=0.5, bins=10)
-        plt.hist(x2, **kwargs, color='b', label='Read')
-        plt.hist(x3, **kwargs, color='r', label='Kernel Execution')
-        plt.gca().set(title='Frequency Histogram', ylabel='Frequency', xlabel='Time [ms]')
+        plt.hist(x2, **kwargs, color='r', label='Read')
+        plt.hist(x3, **kwargs, color='g', label='Kernel Execution')
+        #plt.gca().set(title='Frequency Histogram', ylabel='Frequency', xlabel='Time [ms]')
         plt.xlim(0,15)
-        plt.title('Frequency Histogram', fontsize=15)
+        plt.title('Distribution of execution times\n32x10^7 bit buffer size', fontsize=15)
         plt.xlabel('Time [ms]', fontsize=15)
         plt.ylabel('Frequency', fontsize=15)
         plt.legend(prop={'size':15});
@@ -247,7 +277,8 @@ if __name__ == "__main__":
 #    csv_values.plot_std_deviation_mean()
 #    csv_values.plot_std_deviation_histogram()
 #    csv_values.plot_times()
-    csv_values.plot_distr_hist()
+#    csv_values.plot_distr_hist()
+    csv_values.hist_2d()
 
     read_end_time = csv_values.get_read_end_time()
     read_start_time = csv_values.get_read_start_time()
