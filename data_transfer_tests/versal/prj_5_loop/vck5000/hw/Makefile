@@ -7,13 +7,13 @@ app.exe: ../../src/host.cpp
 		-L${XILINX_XRT}/lib/ -lOpenCL -pthread -lrt -lstdc++
 	
 wide_vadd.xo: ../../src/wide_vadd.cpp
-	v++ -c -t hw --config ../../src/u250.cfg -k wide_vadd -I../../src ../../src/wide_vadd.cpp -o wide_vadd.xo --hls.pre_tcl hls_config.tcl
+	v++ -c -t hw --config ../../src/vck5000.cfg -k wide_vadd -I../../src ../../src/wide_vadd.cpp -o wide_vadd.xo --hls.pre_tcl hls_config.tcl
 
 wide_vadd.xsa: ./wide_vadd.xo
-	v++ -l -t hw --config ../../src/u250.cfg ./wide_vadd.xo -o wide_vadd.xsa --hls.pre_tcl hls_config.tcl
+	v++ -l -t hw --config ../../src/vck5000.cfg ./wide_vadd.xo -o wide_vadd.xsa --hls.pre_tcl hls_config.tcl
 
 wide_vadd.xclbin: ./wide_vadd.xsa
-	v++ --package -t hw --config ../../src/u250.cfg ./wide_vadd.xsa -o wide_vadd.xclbin --hls.pre_tcl hls_config.tcl
+	v++ --package -t hw --config ../../src/vck5000.cfg ./wide_vadd.xsa -o wide_vadd.xclbin --hls.pre_tcl hls_config.tcl
 
 emconfig.json:
 	emconfigutil --platform  xilinx_vck5000_gen4x8_xdma_2_202210_1 --nd 1
