@@ -1,0 +1,113 @@
+<ENTRY>
+{
+ "thisFile": "/home/kaxiotis/Vitis-Tutorials-Data-Transfer/data_transfer_tests/prj_5_loop/u250/hw/wide_vadd.xclbin.package_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Thu Nov 17 22:44:31 2022",
+ "timestampMillis": "1668721471539",
+ "buildStep": {
+  "cmdId": "f6fb7460-b306-48e9-b55e-124b79d24721",
+  "name": "v++",
+  "logFile": "/home/kaxiotis/Vitis-Tutorials-Data-Transfer/data_transfer_tests/prj_5_loop/u250/hw/_x/package/package.steps.log",
+  "commandLine": "/home/xilinx/Vitis/2022.1/bin/unwrapped/lnx64.o/v++  --vivado.prop \"run.__KERNEL__.{STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS}={-directive sdx_optimization_effort_high}\" --advanced.misc \"report=type report_timing_summary name impl_report_timing_summary_route_design_summary steps {route_design} runs {impl_1} options {-max_paths 10}\" --advanced.misc \"report=type report_timing_summary name impl_report_timing_summary_post_route_phys_opt_design_summary steps {post_route_phys_opt_design} runs {impl_1} options {-max_paths 10}\" --package -t hw --platform xilinx_vck5000_gen4x8_xdma_2_202210_1 ./wide_vadd.xsa -o wide_vadd.xclbin --hls.pre_tcl hls_config.tcl ",
+  "args": [
+   "--package",
+   "-t",
+   "hw",
+   "--platform",
+   "xilinx_vck5000_gen4x8_xdma_2_202210_1",
+   "./wide_vadd.xsa",
+   "-o",
+   "wide_vadd.xclbin",
+   "--hls.pre_tcl",
+   "hls_config.tcl"
+  ],
+  "iniFiles": [],
+  "cwd": "/home/kaxiotis/Vitis-Tutorials-Data-Transfer/data_transfer_tests/prj_5_loop/u250/hw"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Thu Nov 17 22:44:31 2022",
+ "timestampMillis": "1668721471539",
+ "status": {
+  "cmdId": "f6fb7460-b306-48e9-b55e-124b79d24721",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "Thu Nov 17 22:44:38 2022",
+ "timestampMillis": "1668721478940",
+ "buildSummary": {
+  "hardwarePlatform": "xilinx_vck5000_gen4x8_xdma_2_202210_1.xpfm",
+  "hardwareDsa": "",
+  "platformDirectory": "/opt/xilinx/platforms/xilinx_vck5000_gen4x8_xdma_2_202210_1",
+  "runtime": "OpenCL",
+  "systemConfig": "Linux",
+  "flow": "BF_PACKAGE",
+  "target": "TT_HW",
+  "binaryContainer": {
+   "base": {
+    "type": "BT_UKNOWN",
+    "name": "wide_vadd",
+    "file": "/home/kaxiotis/Vitis-Tutorials-Data-Transfer/data_transfer_tests/prj_5_loop/u250/hw/wide_vadd.xclbin",
+    "reports": [],
+    "uuid": ""
+   },
+   "kernels": []
+  },
+  "kernels": [],
+  "toolVersion": "Vitis V++ Compiler Release 2022.1.2. SW Build 3602371 on 2022-08-02-23:13:43"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Thu Nov 17 22:44:40 2022",
+ "timestampMillis": "1668721480442",
+ "report": {
+  "path": "/home/kaxiotis/Vitis-Tutorials-Data-Transfer/data_transfer_tests/prj_5_loop/u250/hw/_x/reports/package/v++_package_wide_vadd_guidance.html",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Thu Nov 17 22:44:40 2022",
+ "timestampMillis": "1668721480443",
+ "report": {
+  "path": "/home/kaxiotis/Vitis-Tutorials-Data-Transfer/data_transfer_tests/prj_5_loop/u250/hw/_x/v++_package_wide_vadd_guidance.pb",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE",
+  "cmdId": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Thu Nov 17 22:44:40 2022",
+ "timestampMillis": "1668721480444",
+ "status": {
+  "cmdId": "f6fb7460-b306-48e9-b55e-124b79d24721",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
